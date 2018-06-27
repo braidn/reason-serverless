@@ -1,0 +1,21 @@
+service:
+  name: stuff
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  region: us-west-2
+
+functions:
+  echo:
+    memorySize: 256
+    timeout: 29
+    handler: src/handler.echo
+    events:
+      - http:
+          path: /echo
+          method: post
